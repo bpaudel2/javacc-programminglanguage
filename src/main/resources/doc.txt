@@ -1,0 +1,106 @@
+Programming Language:
+
+The term programming language refers to high level
+programming language like C/C++, Java.
+1. Compile the program (like C/C++)
+2. Interpret the program (like Perl)
+
+We are creating an interpreted language like Perl or
+Ruby called St4tic.
+
+Tools like Yacc, JavaCC etc.
+
+JAVACC:
+Java Compiler is an open source parser generator for the JAVA
+programming language. JAVACC generates top-down parsers, which
+limits it to the LL(k) class of grammers (in particular, left
+recursion can not be used). The tree builder that accompanies it,
+JJTree, constructs its trees from the bottom up.
+
+Briefly, JavaCC is a tool for transforming and generating a parser with Java source code (like regular expressions) for checking
+source code syntax, from rules you've defined as grammar. Don't worry, JavaCC grammar is like Java source code, so you may need
+to be familiarized with Java.
+
+Java Reflection :
+
+We can access private members using reflection.
+
+EXAMPLE###################
+
+require java lang.
+
+def var = 13.
+
+while var >0 do
+    System:out:println(var).
+    var = var -1.
+stop
+########################
+
+The process:
+
+1. Soucre String
+2. Parser [Lexical Analysis(Create Tokens) -> Tokens ->Syntactic Analysis(Create Tree)
+3. Parse Tree
+4. Compiler, Interpreter or Translator
+5. Output
+
+Grammer:
+
+Options , Tokens and Rules.
+
+https://www.javaworld.com/article/2076269/build-your-own-languages-with-javacc.html
+
+
+A computer language's grammar rules can be
+specified unambigously and in their entirely
+with the EBNF(Extended Backus-Naur-Form) notation.
+
+EBNF defines grammars in terms of production rules. A production
+rules states that a grammar element --either literals or composed
+elements -- can be composed of other grammar elements.
+
+GRAMMAR_ELEMENT := list of grammar elements
+                | alternate list of grammar elements
+
+An an example, let's look at the grammar rules for a small language that
+describes basic arithmetic expressions.
+
+exp       := number
+        | expr '+' expr
+        | expr '-' expr
+        | expr '*' expr
+        | expr '/' expr
+        | '(' expr ')'
+        | - expr
+number    :=  digit+ ('.' digit+)?
+digit     := '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'
+
+JavaCC:
+is free parser generator. It provides a Java language
+extension for specifying a programming language's grammar.
+JavaCC allow us to define grammars in a fashion similar to EBNF,
+making it easy to translate EBNF grammars into the
+JavaCC format.
+
+Arithmetic.jj :
+
+The options section at the top specifies a set of options for that
+grammar. We specify a lookahead of 2. Additional options control JavaCC's
+debugging features and more.
+
+Now run $javacc Arithmetic.jj
+
+this is how you run it.
+
+Arithmetic parser = new Arithmetic(System.in);
+parser.expr();
+
+However, nothing much happens yet because Arithmetic.jj we've only defined
+the grammar rules. We have not yet added the code necessary to perform the
+calculations. To do so, we add appropriate actions to the grammar rules.
+
+calculator.jj
+
+
+
